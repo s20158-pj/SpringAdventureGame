@@ -1,9 +1,11 @@
 package pl.pjatk.RPGAdventureGame.factories;
 
+import org.springframework.stereotype.Component;
 import pl.pjatk.RPGAdventureGame.model.monsters.Monster;
 import pl.pjatk.RPGAdventureGame.model.monsters.Rat;
 import pl.pjatk.RPGAdventureGame.model.monsters.Slime;
 
+@Component
 public class MonsterFactory {
 
     public MonsterFactory() {

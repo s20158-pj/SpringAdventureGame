@@ -5,7 +5,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import pl.pjatk.RPGAdventureGame.model.Player;
 import pl.pjatk.RPGAdventureGame.repository.PlayerRepository;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
 
 import static org.mockito.Mockito.when;
 
@@ -19,8 +24,12 @@ public class PlayerServiceTest {
     private PlayerService playerService;
 
     @Test
-    public isPlayerRepositoryEmpty() {
-        when(playerRepository)
+    void isPlayerRepositoryEmpty() {
+        when(playerRepository.findAll()).thenReturn(List.of(new Player()));
+
+        List<Player> all = playerService.findAll();
+
+        assertThat(all).isNotEmpty();
     }
 
 }

@@ -2,7 +2,6 @@ package pl.pjatk.RPGAdventureGame.service;
 
 import org.springframework.stereotype.Service;
 import pl.pjatk.RPGAdventureGame.factories.MonsterFactory;
-import pl.pjatk.RPGAdventureGame.model.Player;
 import pl.pjatk.RPGAdventureGame.model.monsters.Monster;
 import pl.pjatk.RPGAdventureGame.repository.MonsterRepository;
 
@@ -13,9 +12,11 @@ import java.util.Optional;
 public class MonsterService {
 
     private MonsterRepository monsterRepository;
+    private MonsterFactory monsterFactory;
 
-    public MonsterService(MonsterRepository monsterRepository) {
+    public MonsterService(MonsterRepository monsterRepository, MonsterFactory monsterFactory) {
         this.monsterRepository = monsterRepository;
+        this.monsterFactory = monsterFactory;
     }
 
     public List<Monster> findAll(){
@@ -26,7 +27,8 @@ public class MonsterService {
         return monsterRepository.findById(id);
     }
 
-    public Monster save(Monster monster) {
+    public Monster save(String name, Integer level) throws Exception {
+        Monster monster = monsterFactory.monstFactory(name, level);
         return monsterRepository.save(monster);
     }
 
