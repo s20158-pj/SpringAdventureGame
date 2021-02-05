@@ -27,6 +27,17 @@ public class Player {
     public Player() {
     }
 
+    public Player(String name, int health, int attack, int mana, int money, int experience, int xCoor, int yCoor) {
+        this.name = name;
+        this.health = health;
+        this.attack = attack;
+        this.mana = mana;
+        this.money = money;
+        this.experience = experience;
+        this.xCoor = xCoor;
+        this.yCoor = yCoor;
+    }
+
     public Integer getId() {
         return id;
     }
